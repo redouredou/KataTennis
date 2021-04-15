@@ -44,6 +44,13 @@ public class Player {
     }
 
     @Override
+    public String toString() {
+        return "Player{" +
+                "playerScore=" + playerScore +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(playerScore);
     }
