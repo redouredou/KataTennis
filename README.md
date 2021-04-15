@@ -12,4 +12,4 @@ Later, you will get a call "score()" from the scoreboard asking what it should d
 
 3. If at least three points have been scored by each player, and the scores are equal, the scores are equal, te score is "**Deuce**"
 
-4. If at least three points havbe been scored by each side and a player has one more point than his opponent, the score of the game is "Advantage" for the player in the lead
+4. If at least three points have been scored by each side and a player has one more point than his opponent, the score of the game is "Advantage" for the player in the lead
