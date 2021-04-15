@@ -15,12 +15,12 @@ class TennisTest
 
     @ParameterizedTest(name = " method scoresPoint should return {1} when current point is {0} ")
     @MethodSource("provideCurrentScoreAndExpectedScore")
-    void givenScoreLove_whenScoresPoint_thenReturnFifteen(RunningScore currentScore, RunningScore expectedNewScore) throws RunningScoreException {
+    void givenScoreInput_whenScoresPoint_thenReturnNewScore(RunningScore currentScore, RunningScore expectedNewScore) throws RunningScoreException {
+        Player player = new Player(currentScore);
 
-        RunningScore actualNewScore;
-        actualNewScore = scorePoints(currentScore);
+        player.scorePoints(currentScore);
 
-        assertThat(actualNewScore).isEqualTo(expectedNewScore);
+        assertThat(player.getPlayerScore()).isEqualTo(expectedNewScore);
     }
 
     static Stream<Arguments> provideCurrentScoreAndExpectedScore(){
@@ -29,16 +29,4 @@ class TennisTest
                 Arguments.of(THIRTY, FORTY));
     }
 
-    RunningScore scorePoints(RunningScore currentStore) throws RunningScoreException {
-        switch (currentStore){
-            case LOVE:
-                return FIFTEEN;
-            case FIFTEEN:
-                return THIRTY;
-            case THIRTY:
-                return FORTY;
-            default:
-                throw new RunningScoreException("invalid value for enum : " + currentStore );
-        }
-    }
 }
