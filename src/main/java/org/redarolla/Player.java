@@ -35,6 +35,10 @@ public class Player {
         }
     }
 
+    boolean hasFortyPoints(){
+        return this.getPlayerScore().equals(FORTY);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

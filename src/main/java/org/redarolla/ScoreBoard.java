@@ -11,6 +11,10 @@ public class ScoreBoard {
     }
 
     public String score() {
+        if(this.playerOne.hasFortyPoints() && this.playerTwo.hasFortyPoints()){
+            return "Deuce";
+        }
         return this.playerOne.getPlayerScore().value()+" "+this.playerTwo.getPlayerScore().value();
     }
+
 }

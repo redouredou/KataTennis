@@ -69,6 +69,17 @@ class TennisTest
         assertThat(scoreResult).isEqualTo("15 40");
     }
 
+    @Test
+    void given_ScorePlayerOne_Forty_and_ScorePlayerTwo_Forty_whenDisplayScores_thenReturnScoreResult_Deuce()  {
+        Player playerOne = new Player(FORTY);
+        Player playerTwo = new Player(FORTY);
+        ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
+        String scoreResult = scoreBoard.score();
+
+        assertThat(scoreResult).isEqualTo("Deuce");
+    }
+
+
     static Stream<Arguments> provideCurrentScoreAndExpectedScore(){
        return  Stream.of(Arguments.of(LOVE, FIFTEEN),
                 Arguments.of(FIFTEEN, THIRTY),
