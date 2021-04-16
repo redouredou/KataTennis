@@ -22,17 +22,17 @@ class TennisTest
 
     @BeforeAll
     static void init(){
-        playerTestLove = new Player(LOVE);
-        playerTestFifteen = new Player(FIFTEEN);
-        playerTestThirty = new Player(THIRTY);
-        playerTestForty = new Player(FORTY);
+        playerTestLove = new Player("playerTest", LOVE);
+        playerTestFifteen = new Player("playerTest", FIFTEEN);
+        playerTestThirty = new Player("playerTest", THIRTY);
+        playerTestForty = new Player("playerTest", FORTY);
 
     }
 
     @ParameterizedTest(name = " method scoresPoint should return {1} when current point is {0} ")
     @MethodSource("provideCurrentScoreAndExpectedScore")
     void givenScoreInput_whenScoresPoint_thenReturnNewScore(RunningScore currentScore, RunningScore expectedNewScore) throws RunningScoreException {
-        Player player = new Player(currentScore);
+        Player player = new Player("playerTest", currentScore);
 
         player.scorePoints();
 
@@ -51,8 +51,8 @@ class TennisTest
 
     @Test
     void given_ScorePlayerOne_love_and_ScorePlayerTwo_Thirty_whenDisplayScores_thenReturnScoreResult_Love_Thirty()  {
-        Player playerOne = new Player(LOVE);
-        Player playerTwo = new Player(THIRTY);
+        Player playerOne = new Player("player1", LOVE);
+        Player playerTwo = new Player("player2", THIRTY);
         ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
         String scoreResult = scoreBoard.score();
 
@@ -61,8 +61,8 @@ class TennisTest
 
     @Test
     void given_ScorePlayerOne_Fifteen_and_ScorePlayerTwo_forty_whenDisplayScores_thenReturnScoreResult_fifteen_forty()  {
-        Player playerOne = new Player(FIFTEEN);
-        Player playerTwo = new Player(FORTY);
+        Player playerOne = new Player("player1",FIFTEEN);
+        Player playerTwo = new Player("player2",FORTY);
         ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
         String scoreResult = scoreBoard.score();
 
@@ -71,8 +71,8 @@ class TennisTest
 
     @Test
     void given_ScorePlayerOne_Forty_and_ScorePlayerTwo_Forty_whenDisplayScores_thenReturnScoreResult_Deuce()  {
-        Player playerOne = new Player(FORTY);
-        Player playerTwo = new Player(FORTY);
+        Player playerOne = new Player("player1", FORTY);
+        Player playerTwo = new Player("player2", FORTY);
         ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
         String scoreResult = scoreBoard.score();
 
@@ -81,8 +81,8 @@ class TennisTest
 
     @Test
     void given_ScorePlayerOne_Forty_and_ScorePlayerTwo_Forty_whenScorePoints_thenReturnScoreAdvantageForPlayerScored() throws RunningScoreException {
-        Player playerOne = new Player(FORTY);
-        Player playerTwo = new Player(FORTY);
+        Player playerOne = new Player("player1", FORTY);
+        Player playerTwo = new Player("player2", FORTY);
         ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
         playerOne.scorePoints();
 
@@ -93,8 +93,8 @@ class TennisTest
 
     @Test
     void given_ScorePlayerOne_Advantage_and_ScorePlayerTwo_Forty_whenScorePoints_by_playerTwo_thenPlayerOneLoseAdvantageAndReturnForty() throws RunningScoreException {
-        Player playerOne = new Player(ADVANTAGE);
-        Player playerTwo = new Player(FORTY);
+        Player playerOne = new Player("player1", ADVANTAGE);
+        Player playerTwo = new Player("player2", FORTY);
         ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
         playerTwo.scorePoints();
 
@@ -103,6 +103,17 @@ class TennisTest
         assertThat(scoreResult).isEqualTo("Deuce");
     }
 
+    @Test
+    void given_ScorePlayerOne_Advantage_and_ScorePlayerTwo_Forty_whenScorePoints_by_playerOne_thenPlayerOneWin() throws RunningScoreException {
+        Player playerOne = new Player("player1", ADVANTAGE);
+        Player playerTwo = new Player("player2", FORTY);
+        ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
+        playerOne.scorePoints();
+
+        String scoreResult = scoreBoard.score();
+
+        assertThat(scoreResult).isEqualTo("player1 is winner!");
+    }
 
 
 

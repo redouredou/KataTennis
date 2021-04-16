@@ -5,9 +5,11 @@ import java.util.Objects;
 import static org.redarolla.RunningScore.*;
 
 public class Player {
+    private String name;
     private RunningScore playerScore;
 
-    public Player(RunningScore playerScore){
+    public Player(String name, RunningScore playerScore){
+        this.name = name;
         this.playerScore = playerScore;
     }
 
@@ -33,6 +35,9 @@ public class Player {
             case FORTY:
                 setPlayerScore(ADVANTAGE);
                 break;
+            case ADVANTAGE:
+                setPlayerScore(WINNER);
+                break;
             default:
                 throw new RunningScoreException("Forbidden value for enum : " + this.playerScore );
         }
@@ -46,6 +51,13 @@ public class Player {
         return this.getPlayerScore().equals(ADVANTAGE);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public boolean equals(Object o) {
