@@ -100,7 +100,7 @@ class TennisTest
 
         String scoreResult = scoreBoard.score();
 
-        assertThat(scoreResult).isEqualTo("40 40");
+        assertThat(scoreResult).isEqualTo("Deuce");
     }
 
 

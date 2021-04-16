@@ -42,6 +42,10 @@ public class Player {
         return this.getPlayerScore().equals(FORTY);
     }
 
+    boolean hasAdvantage(){
+        return this.getPlayerScore().equals(ADVANTAGE);
+    }
+
 
     @Override
     public boolean equals(Object o) {
