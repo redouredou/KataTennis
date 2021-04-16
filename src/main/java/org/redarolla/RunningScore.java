@@ -7,7 +7,7 @@ public enum RunningScore {
     FORTY("40"),
     DEUCE("Deuce"),
     ADVANTAGE("Advantage"),
-    WINNER("Winner");
+    WON("Winner");
 
     private String points;
 

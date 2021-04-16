@@ -36,19 +36,19 @@ public class Player {
                 setPlayerScore(ADVANTAGE);
                 break;
             case ADVANTAGE:
-                setPlayerScore(WINNER);
+                setPlayerScore(WON);
                 break;
             default:
                 throw new RunningScoreException("Forbidden value for enum : " + this.playerScore );
         }
     }
 
-    boolean hasFortyPoints(){
-        return this.getPlayerScore().equals(FORTY);
+    boolean has(RunningScore lookUpScore){
+        return this.getPlayerScore().equals(lookUpScore);
     }
 
-    boolean hasAdvantage(){
-        return this.getPlayerScore().equals(ADVANTAGE);
+    String getPlayerScoreValue(){
+        return this.getPlayerScore().value();
     }
 
     public String getName() {

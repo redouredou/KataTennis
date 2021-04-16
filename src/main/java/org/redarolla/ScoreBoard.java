@@ -21,20 +21,20 @@ public class ScoreBoard {
     }
 
     public String score() {
-        if(this.playerOne.hasAdvantage() && this.playerTwo.hasAdvantage()){
+        if(this.playerOne.has(ADVANTAGE) && this.playerTwo.has(ADVANTAGE)){
             this.playerOne.setPlayerScore(FORTY);
             this.playerTwo.setPlayerScore(FORTY);
         }
-        if(this.playerOne.hasFortyPoints() && this.playerTwo.hasFortyPoints()){
+        if(this.playerOne.has(FORTY) && this.playerTwo.has(FORTY)){
             return DEUCE.value();
         }
-        if(this.playerOne.getPlayerScore().equals(WINNER)){
+        if(this.playerOne.has(WON)){
             return playerOne.getName()+" is winner!";
         }
-        if(this.playerTwo.getPlayerScore().equals(WINNER)){
+        if(this.playerTwo.has(WON)){
             return playerTwo.getName()+" is winner!";
         }
-        return this.playerOne.getPlayerScore().value()+" "+this.playerTwo.getPlayerScore().value();
+        return this.playerOne.getPlayerScoreValue()+" "+this.playerTwo.getPlayerScoreValue();
     }
 
 }

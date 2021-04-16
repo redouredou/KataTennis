@@ -18,7 +18,7 @@ class TennisTest
     static Player playerTestFifteen;
     static Player playerTestThirty;
     static Player playerTestForty;
-
+    static Player playerTestAdvantage;
 
     @BeforeAll
     static void init(){
@@ -26,7 +26,7 @@ class TennisTest
         playerTestFifteen = new Player("playerTest", FIFTEEN);
         playerTestThirty = new Player("playerTest", THIRTY);
         playerTestForty = new Player("playerTest", FORTY);
-
+        playerTestAdvantage = new Player("playerTest", ADVANTAGE);
     }
 
     @ParameterizedTest(name = " method scoresPoint should return {1} when current point is {0} ")
@@ -132,7 +132,9 @@ class TennisTest
     static Stream<Arguments> provideCurrentScoreAndExpectedScore(){
        return  Stream.of(Arguments.of(LOVE, FIFTEEN),
                 Arguments.of(FIFTEEN, THIRTY),
-                Arguments.of(THIRTY, FORTY));
+                Arguments.of(THIRTY, FORTY),
+               Arguments.of(FORTY, ADVANTAGE),
+               Arguments.of(ADVANTAGE, WON));
     }
 
     static Stream<Arguments> providePlayersPointsAndExpectedScoreBoard(){
@@ -142,7 +144,11 @@ class TennisTest
                 Arguments.of(playerTestFifteen, playerTestThirty,"15 30"),
                 Arguments.of(playerTestThirty, playerTestThirty,"30 30"),
                 Arguments.of(playerTestThirty, playerTestForty,"30 40"),
-                Arguments.of(playerTestForty, playerTestThirty,"40 30"));
+                Arguments.of(playerTestForty, playerTestThirty,"40 30"),
+                Arguments.of(playerTestForty, playerTestForty,"Deuce"),
+                Arguments.of(playerTestAdvantage, playerTestForty,"Advantage 40"),
+                Arguments.of(playerTestForty, playerTestAdvantage,"40 Advantage"),
+                Arguments.of(playerTestAdvantage, playerTestAdvantage,"Deuce"));
 
     }
 
