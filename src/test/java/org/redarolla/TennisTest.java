@@ -34,7 +34,7 @@ class TennisTest
     void givenScoreInput_whenScoresPoint_thenReturnNewScore(RunningScore currentScore, RunningScore expectedNewScore) throws RunningScoreException {
         Player player = new Player(currentScore);
 
-        player.scorePoints(currentScore);
+        player.scorePoints();
 
         assertThat(player.getPlayerScore()).isEqualTo(expectedNewScore);
     }
@@ -78,6 +78,32 @@ class TennisTest
 
         assertThat(scoreResult).isEqualTo("Deuce");
     }
+
+    @Test
+    void given_ScorePlayerOne_Forty_and_ScorePlayerTwo_Forty_whenScorePoints_thenReturnScoreAdvantageForPlayerScored() throws RunningScoreException {
+        Player playerOne = new Player(FORTY);
+        Player playerTwo = new Player(FORTY);
+        ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
+        playerOne.scorePoints();
+
+        String scoreResult = scoreBoard.score();
+
+        assertThat(scoreResult).isEqualTo("Advantage 40");
+    }
+
+    @Test
+    void given_ScorePlayerOne_Advantage_and_ScorePlayerTwo_Forty_whenScorePoints_by_playerTwo_thenPlayerOneLoseAdvantageAndReturnForty() throws RunningScoreException {
+        Player playerOne = new Player(ADVANTAGE);
+        Player playerTwo = new Player(FORTY);
+        ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
+        playerTwo.scorePoints();
+
+        String scoreResult = scoreBoard.score();
+
+        assertThat(scoreResult).isEqualTo("40 40");
+    }
+
+
 
 
     static Stream<Arguments> provideCurrentScoreAndExpectedScore(){

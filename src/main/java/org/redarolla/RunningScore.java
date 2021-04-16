@@ -1,7 +1,7 @@
 package org.redarolla;
 
 public enum RunningScore {
-    LOVE("0"),FIFTEEN("15"),THIRTY("30"),FORTY("40"), DEUCE("Deuce");
+    LOVE("0"),FIFTEEN("15"),THIRTY("30"),FORTY("40"), DEUCE("Deuce"), ADVANTAGE("Advantage");
 
     private String points;
 

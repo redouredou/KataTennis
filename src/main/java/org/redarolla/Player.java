@@ -19,8 +19,8 @@ public class Player {
         this.playerScore = playerScore;
     }
 
-    void scorePoints(RunningScore currentStore) throws RunningScoreException {
-        switch (currentStore){
+    void scorePoints() throws RunningScoreException {
+        switch (this.playerScore){
             case LOVE:
                 setPlayerScore(FIFTEEN);
                 break;
@@ -30,14 +30,18 @@ public class Player {
             case THIRTY:
                 setPlayerScore(FORTY);
                 break;
+            case FORTY:
+                setPlayerScore(ADVANTAGE);
+                break;
             default:
-                throw new RunningScoreException("invalid value for enum : " + currentStore );
+                throw new RunningScoreException("Forbidden value for enum : " + this.playerScore );
         }
     }
 
     boolean hasFortyPoints(){
         return this.getPlayerScore().equals(FORTY);
     }
+
 
     @Override
     public boolean equals(Object o) {
