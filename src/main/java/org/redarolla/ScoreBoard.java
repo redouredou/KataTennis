@@ -1,9 +1,11 @@
 package org.redarolla;
 
+import static org.redarolla.RunningScore.*;
+
 public class ScoreBoard {
 
-    Player playerOne;
-    Player playerTwo;
+    private final Player playerOne;
+    private final Player playerTwo;
 
     public ScoreBoard(Player playerOne, Player playerTwo){
         this.playerOne = playerOne;
@@ -12,7 +14,7 @@ public class ScoreBoard {
 
     public String score() {
         if(this.playerOne.hasFortyPoints() && this.playerTwo.hasFortyPoints()){
-            return "Deuce";
+            return DEUCE.value();
         }
         return this.playerOne.getPlayerScore().value()+" "+this.playerTwo.getPlayerScore().value();
     }

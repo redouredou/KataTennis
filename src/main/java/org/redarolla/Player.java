@@ -5,7 +5,7 @@ import java.util.Objects;
 import static org.redarolla.RunningScore.*;
 
 public class Player {
-    RunningScore playerScore;
+    private RunningScore playerScore;
 
     public Player(RunningScore playerScore){
         this.playerScore = playerScore;
