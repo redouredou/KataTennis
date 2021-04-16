@@ -31,6 +31,9 @@ public class ScoreBoard {
         if(this.playerOne.getPlayerScore().equals(WINNER)){
             return playerOne.getName()+" is winner!";
         }
+        if(this.playerTwo.getPlayerScore().equals(WINNER)){
+            return playerTwo.getName()+" is winner!";
+        }
         return this.playerOne.getPlayerScore().value()+" "+this.playerTwo.getPlayerScore().value();
     }
 

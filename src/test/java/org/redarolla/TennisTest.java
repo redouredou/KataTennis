@@ -115,6 +115,18 @@ class TennisTest
         assertThat(scoreResult).isEqualTo("player1 is winner!");
     }
 
+    @Test
+    void given_ScorePlayerTwo_Advantage_and_ScorePlayerOne_Forty_whenScorePoints_by_playerTwo_thenPlayerTwoWin() throws RunningScoreException {
+        Player playerOne = new Player("player1", FORTY);
+        Player playerTwo = new Player("player2", ADVANTAGE);
+        ScoreBoard scoreBoard = new ScoreBoard(playerOne, playerTwo);
+        playerTwo.scorePoints();
+
+        String scoreResult = scoreBoard.score();
+
+        assertThat(scoreResult).isEqualTo("player2 is winner!");
+    }
+
 
 
     static Stream<Arguments> provideCurrentScoreAndExpectedScore(){
